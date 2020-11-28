@@ -56,3 +56,24 @@
   font-size: 1.2em;
   width: 80%;
 }
+
+main {
+  flex-grow: 1;
+  text-align: center;
+  padding: 10px;
+}
+
+footer {
+  padding: 2px;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: white;
+  font-size: small;
+  text-align: center;
+}
+
+header {
+  padding: 25px;
+}
