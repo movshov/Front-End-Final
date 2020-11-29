@@ -8,8 +8,15 @@ API being used: https://openweathermap.org/
 
 import React, { useState } from "react";
 import Conditions from "../components/Conditions";
-import { Chart } from "react-charts";
+//import { Chart } from "chart.js";
 
+var data = [
+  {
+    temp: "0",
+    day: "0"
+  }
+];
+var days = 7;
 const Forecast = () => {
   let [city, setCity] = useState(""); //city input will need to be URI encoded.
   let [unit, setUnit] = useState("imperial"); //setting intial value to imperial as default.
@@ -56,6 +63,7 @@ const Forecast = () => {
         }
     ]; //min temps array that will hold all or our temps.
     */
+    /*
     let days = 7; //days integer that will hold all of our # of days recorded (7).
     var max_series = []; //series for max.
     var min_Series = []; //sereis for min.
@@ -65,6 +73,7 @@ const Forecast = () => {
         day: "0"
       }
     ]; //combination of both series as the full data input for the dashboard.
+    */
     //get 16 day forecast and use for dashboard.
     e.preventDefault();
     fetch(
@@ -106,10 +115,6 @@ const Forecast = () => {
       .catch(err => {
         console.error(err);
       });
-  }
-
-  function MyChart(obj) {
-    console.log(obj.name);
   }
   /*
       Isn't working for some reason. Keep getting "TypeError can not read property of 'dirname' of undefined" error.
@@ -186,4 +191,5 @@ const Forecast = () => {
     </div>
   );
 };
+export { data, days };
 export default Forecast;

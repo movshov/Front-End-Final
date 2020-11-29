@@ -1,7 +1,9 @@
-import React from "react";
+/*
+import React, {Component } from "react";
+import classes from "./Da"
 import { Chart } from "react-chart";
 
-/*
+
 
 
 import ReactDOM from "react-dom";
