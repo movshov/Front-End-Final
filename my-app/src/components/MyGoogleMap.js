@@ -21,7 +21,6 @@ latitude location, and an address with a city, state, country, and zipcode.
 
 Tutorial Link: https://www.freakyjolly.com/google-maps-in-react-example-application/#.X8HHnRNKhJV
 
-All credit for the following code shown below should go towards them. ^ 
 */
 import React, { Component } from "react";
 

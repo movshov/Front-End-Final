@@ -6,9 +6,13 @@
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
     "@testing-library/user-event": "^12.2.2",
+    "chart.js": "^2.9.4",
+    "eslint-plugin-dependencies": "^2.4.0",
     "google-map-react": "^2.1.9",
     "react": "^17.0.1",
+    "react-charts": "^2.0.0-beta.7",
     "react-dom": "^17.0.1",
+    "react-google-charts": "^3.0.15",
     "react-scripts": "4.0.1",
     "styled-components": "^5.2.1",
     "web-vitals": "^0.2.4"
