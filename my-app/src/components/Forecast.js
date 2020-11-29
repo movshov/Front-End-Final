@@ -43,12 +43,28 @@ const Forecast = () => {
   }
 
   function get16Forecast(e) {
-    var max_temps = ""; //max temps variable that will hold all of our temps.
-    var min_temps = ""; //min temps variable that will hold all or our temps.
-    var days = ""; //days variable that will hold all of our days recorded.
+    /*var max_temps = [
+        {
+            "temp": "0", 
+            "day": "0" 
+        }
+    ]; //max temps array that will hold all of our temps.
+    var min_temps = [
+        {
+            "temp": "0", 
+            "day": "0" 
+        }
+    ]; //min temps array that will hold all or our temps.
+    */
+    let days = 7; //days integer that will hold all of our # of days recorded (7).
     var max_series = []; //series for max.
     var min_Series = []; //sereis for min.
-    var data = []; //combination of both series as the full data input for the dashboard.
+    var data = [
+      {
+        temp: "0",
+        day: "0"
+      }
+    ]; //combination of both series as the full data input for the dashboard.
     //get 16 day forecast and use for dashboard.
     e.preventDefault();
     fetch(
@@ -66,26 +82,21 @@ const Forecast = () => {
       .then(response => {
         //assign the response value to the responseobj variable in our state.
         //var obj = JSON.parse(response);
-        if (max_temps) {
-          max_temps = ""; //reset max_temps variable to be empty before continuing.
-          min_temps = ""; //reset min_temps variable to be empty as well.
-          days = ""; //reset days as well.
-          data = ""; //reset data for chart.
+        if (data) {
+          //max_temps = []; //reset max_temps array to be empty before continuing.
+          //min_temps = []; //reset min_temps array to be empty as well.
+          data = []; //reset data for chart.
         }
         console.log(response);
         for (var k in response.list) {
-          max_temps += response.list[k].temp.max + ","; //grab max temp for each day.
-          min_temps += response.list[k].temp.min + ","; //grab min temp for each day.
+          //max_temps.push(response.list[k].temp.max); //grab max temp for each day.
+          //min_temps += response.list[k].temp.min + ","; //grab min temp for each day.
+          data.push({ temp: response.list[k].temp.max, day: k });
         }
-        days = response.list.length;
-        console.log(max_temps);
-        console.log(min_temps);
+        //days = response.list.length; //if we ever were to grab more than a week of data use this to calculate days.
+        //console.log(max_temps);
+        //console.log(min_temps);
         console.log(days);
-        var data1 = "";
-        for (var i in days) {
-          data.push({ max: max_series[i], day: days[i] }); //combine both series.
-        }
-
         console.log(data);
 
         //MyChart(responseObj2); //pass json object to MyChart function.
