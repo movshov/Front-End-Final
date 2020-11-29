@@ -8,15 +8,18 @@ API being used: https://openweathermap.org/
 
 import React, { useState } from "react";
 import Conditions from "../components/Conditions";
-//import { Chart } from "chart.js";
+import Dashboard from "../views/Dashboard"; //call dashboard.
 
-var data = [
+//import { Chart } from "chart.js";
+/*
+var temp_data = [
   {
-    temp: "0",
-    day: "0"
+    temp: "0"
   }
 ];
-var days = 7;
+*/
+var temp_data = [];
+//var days = 7;
 const Forecast = () => {
   let [city, setCity] = useState(""); //city input will need to be URI encoded.
   let [unit, setUnit] = useState("imperial"); //setting intial value to imperial as default.
@@ -91,22 +94,23 @@ const Forecast = () => {
       .then(response => {
         //assign the response value to the responseobj variable in our state.
         //var obj = JSON.parse(response);
-        if (data) {
+        if (temp_data) {
           //max_temps = []; //reset max_temps array to be empty before continuing.
           //min_temps = []; //reset min_temps array to be empty as well.
-          data = []; //reset data for chart.
+          temp_data = []; //reset data for chart.
         }
         console.log(response);
         for (var k in response.list) {
           //max_temps.push(response.list[k].temp.max); //grab max temp for each day.
           //min_temps += response.list[k].temp.min + ","; //grab min temp for each day.
-          data.push({ temp: response.list[k].temp.max, day: k });
+          //temp_data.push({ temp: response.list[k].temp.max });
+          temp_data.push(response.list[k].temp.max);
         }
         //days = response.list.length; //if we ever were to grab more than a week of data use this to calculate days.
         //console.log(max_temps);
         //console.log(min_temps);
-        console.log(days);
-        console.log(data);
+        //console.log(days);
+        console.log(temp_data);
 
         //MyChart(responseObj2); //pass json object to MyChart function.
         //data = response.list.map(object => object.main.temp); //parse the json variable for temp
@@ -142,7 +146,7 @@ const Forecast = () => {
 */
   return (
     <div>
-      <h2>Find Current Weather Conditions</h2>
+      <h2>Find Weather Conditions</h2>
       <form onSubmit={getForecast}>
         <input
           type="text"
@@ -188,8 +192,18 @@ const Forecast = () => {
         <button type="submit">Get Forecast</button>
       </form>
       <Conditions responseObj={responseObj} />
+      <Dashboard data={temp_data} labels={days} />
     </div>
   );
 };
-export { data, days };
+export const days = [
+  "day 1",
+  "day 2",
+  "day 3",
+  "day 4",
+  "day 5",
+  "day 6",
+  "day 7"
+];
+export { temp_data };
 export default Forecast;
