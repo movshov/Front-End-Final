@@ -68,3 +68,41 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+# Tutorials Used
+For this project I ended up using quite a few different tutorials towards getting everything to work. Listed below are all of the tutorials used in this project. 
+
+Google Map API - https://www.freakyjolly.com/google-maps-in-react-example-application/#.X8HHnRNKhJV 
+
+Weather API - https://rapidapi.com/blog/weather-app-react/
+
+Github Pages Deployment - https://dev.to/yuribenjamin/how-to-deploy-react-app-in-github-pages-2a1f 
+
+ChartJS - https://blog.bitsrc.io/customizing-chart-js-in-react-2199fa81530a 
+
+# APIs Used
+For this project I ended up using two major APIs. The first being the openweathermap API and the second being the GoogleMap API. As it turns out to make the most use out of the GoogleMap API I ended up needing to use a combination of five different APIs together.
+
+Openweathermap API - https://openweathermap.org/
+
+GoogleMap API - https://developers.google.com/maps/documentation 
+The APIs used in conjunction with the GoogleMap API are as follows: 
+    * Geocoding API 
+    * Geolocation API 
+    * Maps Embeded API 
+    * Maps Javascript API 
+    * Places API 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
