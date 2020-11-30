@@ -12,8 +12,7 @@ import React from "react";
 import "./App.css";
 import MyGoogleMap from "./components/MyGoogleMap";
 import Forecast from "./components/Forecast";
-//import Dashboard from "./views/Dashboard";
-//<Dashboard />
+
 function App() {
   return (
     <div className="main-wrapper">

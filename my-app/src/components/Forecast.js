@@ -10,16 +10,7 @@ import React, { useState } from "react";
 import Conditions from "../components/Conditions";
 import Dashboard from "../views/Dashboard"; //call dashboard.
 
-//import { Chart } from "chart.js";
-/*
-var temp_data = [
-  {
-    temp: "0"
-  }
-];
-*/
 var temp_data = [];
-//var days = 7;
 const Forecast = () => {
   let [city, setCity] = useState(""); //city input will need to be URI encoded.
   let [unit, setUnit] = useState("imperial"); //setting intial value to imperial as default.
@@ -53,30 +44,6 @@ const Forecast = () => {
   }
 
   function get16Forecast(e) {
-    /*var max_temps = [
-        {
-            "temp": "0", 
-            "day": "0" 
-        }
-    ]; //max temps array that will hold all of our temps.
-    var min_temps = [
-        {
-            "temp": "0", 
-            "day": "0" 
-        }
-    ]; //min temps array that will hold all or our temps.
-    */
-    /*
-    let days = 7; //days integer that will hold all of our # of days recorded (7).
-    var max_series = []; //series for max.
-    var min_Series = []; //sereis for min.
-    var data = [
-      {
-        temp: "0",
-        day: "0"
-      }
-    ]; //combination of both series as the full data input for the dashboard.
-    */
     //get 16 day forecast and use for dashboard.
     e.preventDefault();
     fetch(
@@ -93,82 +60,54 @@ const Forecast = () => {
       .then(response => response.json()) //convert response into a json object.
       .then(response => {
         //assign the response value to the responseobj variable in our state.
-        //var obj = JSON.parse(response);
         if (temp_data) {
-          //max_temps = []; //reset max_temps array to be empty before continuing.
-          //min_temps = []; //reset min_temps array to be empty as well.
           temp_data = []; //reset data for chart.
         }
         console.log(response);
         for (var k in response.list) {
-          //max_temps.push(response.list[k].temp.max); //grab max temp for each day.
-          //min_temps += response.list[k].temp.min + ","; //grab min temp for each day.
-          //temp_data.push({ temp: response.list[k].temp.max });
           temp_data.push(response.list[k].temp.max);
         }
-        //days = response.list.length; //if we ever were to grab more than a week of data use this to calculate days.
         //console.log(max_temps);
         //console.log(min_temps);
         //console.log(days);
         console.log(temp_data);
-
-        //MyChart(responseObj2); //pass json object to MyChart function.
-        //data = response.list.map(object => object.main.temp); //parse the json variable for temp
-        //time = response.list.map(object => object.main.dt); //time of calculation
       })
       .catch(err => {
         console.error(err);
       });
   }
-  /*
-      Isn't working for some reason. Keep getting "TypeError can not read property of 'dirname' of undefined" error.
-      No idea how to fix this issue so switching from chart.js to google charts. Hopefully this works better. 
 
-    var ctx = document.getElementById("canvas").getContext("2d");
-    var chart = new chart(ctx, {
-      type: "line",
-
-      data: {
-        labels: labels, //use lables from api json response.
-        datasets: [
-          {
-            label: "Graph Line",
-            data: data, //use data from api json response.
-            backgroundColor: "rgba(0, 119, 204, 0.3)"
-          }
-        ]
-      },
-      options: {}
-    });
-    // var chart = new chart(ctx, config); //create new chart.
-    
-  }
-*/
   return (
     <div>
       <h2>Find Weather Conditions</h2>
       <form onSubmit={getForecast}>
         <input
           type="text"
+          id="city"
           placeholder="Enter City"
           maxLength="50"
           value={city}
           onChange={e => setCity(e.target.value)}
         />
+        <label for="city"></label>
         <input
           type="text"
+          id="lat"
           placeholder="Latitude"
           maxLength="50"
           value={lat}
           onChange={e => setlat(e.target.value)}
         />
+        <label for="lat"></label>
         <input
           type="text"
+          id="lon"
           placeholder="Longitude"
           maxLength="50"
           value={lon}
           onChange={e => setlon(e.target.value)}
         />
+        <label for="lon"></label>
         <label>
           <input
             type="radio"
