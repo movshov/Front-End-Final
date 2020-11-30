@@ -91,31 +91,6 @@ class MyGoogleMap extends Component {
     this._generateAddress();
   };
 
-  /* Tried to get marker placements to be persistent. Ran out of time. 
-  markers = [];
-  _addMarkersToMap = place => {
-    if (!place.geometry) {
-      console.log("Returned place contains no geometry");
-      return;
-    }
-    const icon = {
-      url: place.icon,
-      size: new google.maps.Size(71, 71),
-      origin: new google.maps.Point(0, 0),
-      anchor: new google.maps.Point(17, 34),
-      scaledSize: new google.maps.Size(25, 25)
-    };
-
-    markers.push(
-      new google.maps.Marker({
-        mapInstance,
-        icon,
-        title: place.name,
-        position: place.geometry.location
-      })
-    );
-  };
-*/
   addPlace = place => {
     this.setState({
       places: [place],
