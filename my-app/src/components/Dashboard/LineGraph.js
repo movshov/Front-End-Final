@@ -18,6 +18,10 @@ export default class LineGraph extends Component {
     const myChartRef = this.chartRef.current.getContext("2d");
     //const { temp_data, days } = this.props;
 
+    var ctx = document.getElementById("myChart").getContext("2d");
+    var gradientFill = ctx.createLinearGradient(500, 0, 100, 0);
+    gradientFill.addColorStop(0, "rgba(128, 182, 244, 0.6");
+    gradientFill.addColorStop(1, "rgba(244, 144, 128, 0.6");
     if (typeof myLineChart !== "undefined") myLineChart.destroy(); //destroy old chart and build new one.
     //console.log(temp_data);
     myLineChart = new Chart(myChartRef, {
@@ -29,12 +33,15 @@ export default class LineGraph extends Component {
           {
             label: "temperature",
             data: temp_data, //[53.12, 53.1,...]  max temp of each day of the week.
-            fill: false
+            fill: true,
+            borderColor: "#98B9AB",
+            backgroundColor: gradientFill
           }
         ]
       },
       options: {
-        //Customize chart options
+        responsive: true,
+        maintainAspectRatio: false
       }
     });
     console.log(temp_data);
